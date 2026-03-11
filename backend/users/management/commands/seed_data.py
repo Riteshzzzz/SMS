@@ -40,12 +40,14 @@ class Command(BaseCommand):
                 username='admin',
                 email='admin@example.com',
                 password='admin123',
-                role='admin'
+                role='admin',
+                is_active=True
             )
             self.stdout.write('Created admin user')
         else:
             admin_user.set_password('admin123')
             admin_user.role = 'admin'
+            admin_user.is_active = True
             admin_user.save()
             self.stdout.write('Updated admin password')
 
@@ -57,13 +59,15 @@ class Command(BaseCommand):
                 email='resident@example.com',
                 password='resident123',
                 role='resident',
-                flat=flat
+                flat=flat,
+                is_active=True
             )
             self.stdout.write('Created resident user')
         else:
             resident_user.set_password('resident123')
             resident_user.role = 'resident'
             resident_user.flat = flat
+            resident_user.is_active = True
             resident_user.save()
             self.stdout.write('Updated resident password')
 
@@ -90,13 +94,15 @@ class Command(BaseCommand):
                 email='security@example.com',
                 password='security123',
                 role='security',
-                security_profile=security_profile
+                security_profile=security_profile,
+                is_active=True
             )
             self.stdout.write('Created security user')
         else:
             security_user.set_password('security123')
             security_user.role = 'security'
             security_user.security_profile = security_profile
+            security_user.is_active = True
             security_user.save()
             self.stdout.write('Updated security password')
 
