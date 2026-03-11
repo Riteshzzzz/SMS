@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from users.views import UserViewSet
+from users.views import UserViewSet, DebugDBView
 from flats.views import FlatViewSet
 from maintenance.views import MaintenanceViewSet
 from notices.views import NoticeViewSet
@@ -42,6 +42,7 @@ router.register(r'payments', PaymentViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/debug/db/', DebugDBView.as_view(), name='debug_db'),
     path('api/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/reports/', include('reports.urls')),
