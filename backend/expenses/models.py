@@ -1,0 +1,21 @@
+from django.db import models
+
+class Expense(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    category = models.CharField(max_length=30)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_date = models.DateField()
+    payment_method = models.CharField(max_length=30)
+    paid_to = models.CharField(max_length=100)
+    invoice_number = models.CharField(max_length=50, blank=True)
+    invoice_date = models.DateField(null=True, blank=True)
+    invoice_attachment = models.FileField(upload_to='invoices/', blank=True, null=True)
+    requires_approval = models.BooleanField(default=True)
+    approval_status = models.CharField(max_length=20, default='pending')
+    approved_by = models.ForeignKey('users.User', null=True, blank=True, on_delete=models.SET_NULL)
+    approval_date = models.DateTimeField(null=True, blank=True)
+    rejection_reason = models.TextField(blank=True)
+    is_budgeted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

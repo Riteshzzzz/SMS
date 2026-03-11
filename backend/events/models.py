@@ -1,0 +1,21 @@
+from django.db import models
+
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    event_type = models.CharField(max_length=30)
+    event_date = models.DateField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    venue = models.CharField(max_length=100)
+    is_open_to_all = models.BooleanField(default=True)
+    max_participants = models.IntegerField(null=True, blank=True)
+    registration_required = models.BooleanField(default=False)
+    registration_deadline = models.DateField(null=True, blank=True)
+    participation_fee = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    poster_image = models.ImageField(upload_to='events/', blank=True, null=True)
+    status = models.CharField(max_length=20, default='upcoming')
+    estimated_budget = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    actual_expense = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
