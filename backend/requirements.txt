@@ -11,7 +11,7 @@ celery==5.3.6
 django-celery-beat==2.5.0
 redis==5.0.1
 psycopg2-binary==2.9.9
-Pillow==10.3.0
+Pillow==10.2.0
 cloudinary==1.39.0
 twilio==8.10.3
 sendgrid==6.11.0
