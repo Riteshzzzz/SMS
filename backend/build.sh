@@ -2,7 +2,7 @@
 # Render build script for Django backend
 set -o errexit
 
-pip install --upgrade pip setuptools wheel
+pip install --upgrade pip "setuptools<70" wheel
 pip install -r requirements.txt
 
 python manage.py collectstatic --no-input
